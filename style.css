@@ -1,0 +1,323 @@
+/* Futuristic dark executive SaaS dashboard */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+/* Base App Styling */
+.stApp {
+    background: linear-gradient(135deg, #010812, #00122e, #000000);
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+    color: #e0e6ed;
+    font-family: 'Inter', sans-serif;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Hide default streamlit header/footer — but keep sidebar toggle */
+header[data-testid="stHeader"] {
+    background: transparent !important;
+    height: auto !important;
+}
+
+header[data-testid="stHeader"]>div {
+    background: transparent !important;
+}
+
+footer {
+    visibility: hidden;
+}
+
+/* Cursor: use normal browser default */
+
+/* ── Sidebar Toggle Button — ALWAYS visible ── */
+[data-testid="stSidebar"][aria-expanded="false"]~div button[kind="header"],
+button[kind="header"],
+[data-testid="collapsedControl"] {
+    visibility: visible !important;
+    display: flex !important;
+    position: fixed !important;
+    top: 12px !important;
+    left: 12px !important;
+    z-index: 999999 !important;
+    background: rgba(4, 11, 22, 0.85) !important;
+    border: 1px solid rgba(0, 229, 255, 0.4) !important;
+    border-radius: 10px !important;
+    width: 40px !important;
+    height: 40px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.2) !important;
+    transition: all 0.3s ease !important;
+}
+
+button[kind="header"]:hover,
+[data-testid="collapsedControl"]:hover {
+    background: rgba(0, 229, 255, 0.15) !important;
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.5) !important;
+    transform: scale(1.1) !important;
+}
+
+button[kind="header"] svg,
+[data-testid="collapsedControl"] svg {
+    fill: #00e5ff !important;
+    width: 18px !important;
+    height: 18px !important;
+}
+
+/* Sidebar Styling */
+[data-testid="stSidebar"] {
+    background: rgba(4, 11, 22, 0.85) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+/* Sidebar text base */
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] h4,
+[data-testid="stSidebar"] div,
+[data-testid="stSidebar"] span {
+    color: #e0e6ed;
+}
+
+[data-testid="stSidebar"] svg {
+    fill: #00e5ff;
+}
+
+[data-testid="stSidebarNav"] {
+    display: none;
+}
+
+/* Base App Styling */
+.glass-card {
+    background: rgba(16, 25, 43, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 229, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+    padding: 24px;
+    margin-bottom: 24px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: slideUpFade 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.glass-card:hover {
+    transform: translateY(-8px);
+    border: 1px solid rgba(0, 229, 255, 0.4);
+    box-shadow: 0 15px 45px 0 rgba(0, 229, 255, 0.15), inset 0 0 20px rgba(0, 229, 255, 0.05);
+}
+
+@keyframes slideUpFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Metric Display enhancements */
+[data-testid="stMetricValue"] {
+    font-size: 3rem !important;
+    font-weight: 800 !important;
+    color: #00e5ff !important;
+    text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+}
+
+[data-testid="stMetricLabel"] {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    color: #8fa0ba !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Custom Headers */
+h1,
+h2,
+h3 {
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.glow-text {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(0, 229, 255, 0.4);
+}
+
+/* Badges */
+.badge {
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.badge-excellent {
+    background: rgba(0, 255, 170, 0.1);
+    color: #00ffaa;
+    border: 1px solid rgba(0, 255, 170, 0.4);
+    text-shadow: 0 0 10px rgba(0, 255, 170, 0.4);
+}
+
+.badge-strong {
+    background: rgba(0, 204, 255, 0.1);
+    color: #00ccff;
+    border: 1px solid rgba(0, 204, 255, 0.4);
+    text-shadow: 0 0 10px rgba(0, 204, 255, 0.4);
+}
+
+.badge-moderate {
+    background: rgba(255, 196, 0, 0.1);
+    color: #ffc400;
+    border: 1px solid rgba(255, 196, 0, 0.4);
+    text-shadow: 0 0 10px rgba(255, 196, 0, 0.4);
+}
+
+.badge-risk {
+    background: rgba(255, 51, 102, 0.1);
+    color: #ff3366;
+    border: 1px solid rgba(255, 51, 102, 0.4);
+    text-shadow: 0 0 10px rgba(255, 51, 102, 0.4);
+}
+
+/* Table Overrides */
+[data-testid="stDataFrame"] {
+    background: transparent;
+}
+
+.stDataFrame table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.stDataFrame th {
+    background: rgba(0, 229, 255, 0.1) !important;
+    color: #00e5ff !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid rgba(0, 229, 255, 0.3) !important;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.stDataFrame td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    color: #e0e6ed !important;
+}
+
+/* Status Colors in output */
+.status-yes {
+    color: #00ffaa;
+    font-weight: bold;
+}
+
+.status-no {
+    color: #ff3366;
+    font-weight: bold;
+}
+
+/* Buttons */
+.stButton>button {
+    background: linear-gradient(90deg, #0055ff, #00ccff) !important;
+    color: white !important;
+    border: 1px solid rgba(0, 204, 255, 0.5) !important;
+    border-radius: 8px !important;
+    padding: 12px 24px !important;
+    font-weight: 800 !important;
+    font-size: 1.1rem !important;
+    letter-spacing: 1px !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-shadow: 0 4px 15px rgba(0, 85, 255, 0.3) !important;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.stButton>button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: rotate(45deg);
+    animation: buttonShine 3s infinite linear;
+}
+
+@keyframes buttonShine {
+    0% {
+        transform: translateX(-150%) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(150%) rotate(45deg);
+    }
+}
+
+.stButton>button:hover {
+    box-shadow: 0 8px 25px rgba(0, 204, 255, 0.8), inset 0 0 10px rgba(255, 255, 255, 0.5) !important;
+    transform: translateY(-3px) scale(1.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+}
+
+.stButton>button:active {
+    transform: translateY(1px) scale(0.98) !important;
+}
+
+/* File Uploader Customization */
+[data-testid="stFileUploadDropzone"] {
+    background: rgba(0, 229, 255, 0.05) !important;
+    border: 2px dashed rgba(0, 229, 255, 0.3) !important;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    z-index: 100;
+    position: relative;
+}
+
+[data-testid="stFileUploadDropzone"] * {
+    pointer-events: auto;
+}
+
+[data-testid="stFileUploadDropzone"]:hover {
+    background: rgba(0, 229, 255, 0.1) !important;
+    border-color: rgba(0, 229, 255, 0.8) !important;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+}
+
+/* Inputs */
+.stTextInput>div>div>input,
+.stSelectbox>div>div>div {
+    background: rgba(16, 25, 43, 0.6) !important;
+    border: 1px solid rgba(0, 229, 255, 0.2) !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+}
+
+.stTextInput>div>div>input:focus,
+.stSelectbox>div>div>div:focus {
+    border-color: #00e5ff !important;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.3) !important;
+}
